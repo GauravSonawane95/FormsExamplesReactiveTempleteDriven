@@ -1,0 +1,39 @@
+<div class="card f1 mb-3 mt-5" style="max-width: 45rem; margin: auto;">
+    <div class="card-header">Product Cart</div>
+    <div class="card-body">
+        <form [formGroup]="ReactiveCart">
+            <div class="row">
+                <div class="col mt-3">
+                    <label for="cat">Category</label>
+                    <select class="form-control" id="cat" name="cars">
+                      <option *ngFor="let item of category">{{item}}</option>
+                    </select>
+                </div>
+                <div class="col mt-3">
+                    <label for="cat">Product</label>
+                    <select class="form-control" id="cat" name="cars">
+                        <option *ngFor="let item of obj">{{item}}</option>
+                      </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mt-3">
+                    <label>Quantity</label>
+                    <input type="text" name="Quantity" class="form-control" placeholder="Quantity">
+                </div>
+                <div class="col mt-3">
+                    <label>Price</label>
+                    <input type="text" name="Price" class="form-control" placeholder="Price">
+                </div>
+                <div class="col mt-3">
+                    <label>Total Price</label>
+                    <input type="text" name="Total" class="form-control" placeholder="Total Price">
+                </div>
+            </div>
+            <div class="mt-4">
+                <button type="button p-4" class="btn btn-primary">Get Data</button>&nbsp;&nbsp;
+                <button type="button p-4" class="btn btn-secondary">Reset</button>
+            </div>
+        </form>
+    </div>
+</div>

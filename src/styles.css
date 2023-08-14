@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url("../node_modules/bootstrap/dist/css/bootstrap.min.css");
+.f1 {
+    max-width: 65rem;
+    margin: auto;
+    background-color: rgb(187, 187, 187);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.bb {
+    width: 300px;
+    height: 40px;
+}

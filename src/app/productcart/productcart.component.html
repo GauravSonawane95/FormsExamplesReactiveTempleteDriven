@@ -1,0 +1,35 @@
+<div class="card f1 mb-3 mt-5" style="max-width: 45rem; margin: auto;">
+    <div class="card-header">Product Cart</div>
+    <div class="card-body">
+        <form #productform="ngForm">
+            <div class="row">
+                <div class="col mt-3">
+                    <label>Category</label>
+                    <input type="text" [(ngModel)]="product1.Category" name="Category" #Category="ngModel" class="form-control" placeholder="Category">
+                </div>
+                <div class="col mt-3">
+                    <label>Product Name</label>
+                    <input type="text" [(ngModel)]="product1.ProductName" name="ProductName" #ProductName="ngModel" class="form-control" placeholder="Product">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mt-3">
+                    <label>Quantity</label>
+                    <input type="text" [(ngModel)]="product1.Quantity" name="Quantity" #Quantity="ngModel" (ngModelChange)="totalPrice()" class="form-control" placeholder="Quantity">
+                </div>
+                <div class="col mt-3">
+                    <label>Price</label>
+                    <input type="text" [(ngModel)]="product1.Price" name="Price" #Price="ngModel" (ngModelChange)="totalPrice()" class="form-control" placeholder="Price">
+                </div>
+                <div class="col mt-3">
+                    <label>Total Price</label>
+                    <input type="text" [(ngModel)]="product1.Total" name="Total" #Total="ngModel" class="form-control" placeholder="Total Price">
+                </div>
+            </div>
+            <div class="mt-4">
+                <button type="button p-4" class="btn btn-primary" (click)="getData()">Get Data</button>&nbsp;&nbsp;
+                <button type="button p-4" class="btn btn-secondary" (click)="reset()">Reset</button>
+            </div>
+        </form>
+    </div>
+</div>

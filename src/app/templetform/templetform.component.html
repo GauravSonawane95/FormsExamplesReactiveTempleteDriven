@@ -1,0 +1,82 @@
+<div class="card text-dark mt-4 f1">
+    <div class="m-4">
+        <form #resiform="ngForm" (ngSubmit)="resi()">
+            <legend><strong>Templet Driven Form</strong></legend>
+            <div class="row mt-3">
+                <label for="fname">First Name</label>
+                <input type="text" class="form-control" name="fname" [(ngModel)]="resiForm.fname" #fname="ngModel" placeholder="Enter First Name" pattern="[a-zA-Z]{2,10}" minlength="2" maxlength="10" required>
+            </div>
+            <div class="row" *ngIf="fname.touched && fname.invalid">
+                <div class="invalid-feedback d-block" *ngIf="fname.errors?.['required']">Required</div>
+                <div class="invalid-feedback d-block" *ngIf="fname.errors?.['minlength']">Must have 2 charectors</div>
+                <div class="invalid-feedback d-block" *ngIf="fname.errors?.['pattern']">Enter Valid Details (Charectors only)</div>
+            </div>
+            <div class="row mt-2">
+                <label for="lname">Last Name</label>
+                <input type="text" class="form-control" name="lname" #lname="ngModel" [(ngModel)]="resiForm.lname" placeholder="Enter Last Name" pattern="[a-zA-Z]{2,10}" minlength="2" maxlength="10" required>
+                <div class="row" *ngIf="lname.touched &&  lname.invalid">
+                    <div class="invalid-feedback d-block" *ngIf="lname.errors?.['required']">Required</div>
+                    <div class="invalid-feedback d-block" *ngIf="lname.errors?.['minlength']">Must have 2 charectors</div>
+                    <div class="invalid-feedback d-block" *ngIf="lname.errors?.['pattern']">Enter Valid Details (Charectors only)</div>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <label for="E-mail">E-mail</label>
+                <input type="email" class="form-control" name="Email" #Email="ngModel" [(ngModel)]="resiForm.Email" placeholder="Enter E-mail" pattern="[^ @]*@[^ @]*" required>
+            </div>
+            <div class="row" *ngIf="Email.touched &&  Email.invalid">
+                <div class="invalid-feedback d-block" *ngIf="Email.errors?.['required']">Required</div>
+                <div class="invalid-feedback d-block" *ngIf="Email.errors?.['pattern']">Enter Valid E-mail Address</div>
+            </div>
+            <div class="row mt-2">
+                <label for="Mobile">Mobile</label>
+                <input type="text" class="form-control" name="mob" [(ngModel)]="resiForm.Mobile" #mob="ngModel" placeholder="Enter Mobile Number" pattern="[789][0-9]{9}" minlength="10" maxlength="10" required>
+            </div>
+            <div class="row" *ngIf="mob.touched &&  mob.invalid">
+                <div class="invalid-feedback d-block" *ngIf="mob.errors?.['required']">Required</div>
+                <div class="invalid-feedback d-block" *ngIf="mob.errors?.['minlength']">Enter 10 Digit Mobile Number</div>
+                <div class="invalid-feedback d-block" *ngIf="mob.errors?.['pattern']">Enter Valid Mobile Number(Number only)</div>
+            </div>
+            <div class="row mt-2">
+                <label for="dob">Date Of Birth</label>
+                <input type="date" class="form-control" name="dob" [(ngModel)]="resiForm.dob" #dob="ngModel" (ngModelChange)="calculateAge()" placeholder="Enter Date Of Birth" required>
+
+            </div>
+            <div *ngIf="dob.touched && dob.invalid">
+                <div *ngIf="dob.errors?.['required']">Required</div>
+            </div>
+            <div class="row mt-2" *ngIf="dob.dirty">
+                <label for="age">Age</label>
+                <input type="text" class="form-control" name="age" [(ngModel)]="resiForm.Age" id="age" value="{{resiForm.Age}}" ngModel #age="ngModel" readonly>
+            </div>
+            <div class="row mt-2">
+                <label for="Pass">Password</label>
+                <input type="password" class="form-control" name="Pass" [(ngModel)]="resiForm.Pass" #Pass="ngModel" placeholder="Enter Password" pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{10,}$" minlength="10" maxlength="10" required>
+            </div>
+            <div class="row" *ngIf="Pass.touched &&  Pass.invalid">
+                <div class="invalid-feedback d-block" *ngIf="Pass.errors?.['required']">Required</div>
+                <div class="invalid-feedback d-block" *ngIf="Pass.errors?.['minlength']">Password Must Have 10 Alphanumeric Values</div>
+                <div class="invalid-feedback d-block" *ngIf="Pass.errors?.['pattern']">Must Contains<br>One Number<br>One Uppercase Letter</div>
+            </div>
+            <div class="mt-2">
+                <input type="checkbox" [(ngModel)]="resiForm.Check" name="checked" #checked="ngModel" required><label>&nbsp;I accept all turms and conditions.</label>
+            </div>
+            <div class="row" *ngIf="checked.touched &&  checked.invalid">
+                <div class="invalid-feedback d-block" *ngIf="checked.errors?.['required']">Please agree to turms and condition.</div>
+            </div>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary" [disabled]="!resiform.valid">Submit</button>&nbsp;&nbsp;
+                <button (click)="getUser()" class="btn btn-secondary" [disabled]="resiform.valid">Get Data</button>&nbsp;&nbsp;
+                <button type="button p-4" class="btn btn-secondary" (click)="reset()" [disabled]="!resiform.valid">Reset</button>
+            </div>
+        </form>
+    </div>
+    <!-- <div class="row m-3">
+        <div><b>Values :</b> {{resiform.value | json}}</div>
+        <div><b>Valid :</b> {{resiform.valid}}</div>
+        <div><b>Touched :</b>{{resiform.touched}}</div>
+        <div><b>Untouched :</b>{{resiform.untouched}}</div>
+
+    </div> -->
+</div>
